@@ -27,10 +27,16 @@ import com.example.android.android_me.data.AndroidImageAssets;
 public class AndroidMeActivity extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_android_me);
 
+        if (savedInstanceState == null) {
+            initializeFragments();
+        }
+    }
+
+    private void initializeFragments() {
         final BodyPartFragment headPartFragment = new BodyPartFragment();
         final BodyPartFragment bodyPartFragment = new BodyPartFragment();
         final BodyPartFragment legPartFragment = new BodyPartFragment();
