@@ -16,9 +16,10 @@
 
 package com.example.android.android_me.ui;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import com.example.android.android_me.R;
 import com.example.android.android_me.data.AndroidImageAssets;
@@ -46,9 +47,10 @@ public class AndroidMeActivity extends AppCompatActivity {
         bodyPartFragment.setImageIds(AndroidImageAssets.getBodies());
         legPartFragment.setImageIds(AndroidImageAssets.getLegs());
 
-        headPartFragment.setImageIndex(0);
-        bodyPartFragment.setImageIndex(0);
-        legPartFragment.setImageIndex(0);
+        final Intent intent = getIntent();
+        headPartFragment.setImageIndex(intent.getIntExtra(MainActivity.EXTRA_HEAD, 0));
+        bodyPartFragment.setImageIndex(intent.getIntExtra(MainActivity.EXTRA_BODY, 0));
+        legPartFragment.setImageIndex(intent.getIntExtra(MainActivity.EXTRA_LEGS, 0));
 
         final FragmentManager fragmentManager = getSupportFragmentManager();
 
